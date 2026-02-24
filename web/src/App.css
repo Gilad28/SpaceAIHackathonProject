@@ -1,0 +1,16 @@
+
+
+.Header {
+  color: #22ff00;
+}
+
+.InputField {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #22ff00;
+  font-family: inherit;
+  font-size: 22px;
+  caret-color: #00ff66;
+}
