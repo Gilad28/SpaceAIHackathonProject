@@ -1,7 +1,12 @@
 from dotenv import load_dotenv
 from google import genai
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 
 load_dotenv()
+
+app = Flask(__name__)
+CORS(app)
 
 client = genai.Client()
 
@@ -15,11 +20,17 @@ chat = client.chats.create(
     ]
 )
 
-while True:
-    message = input("Astronaut: ")
-    if message.lower() == "exit":
-        break
+
+@app.route("/api/chat", methods=["POST"])
+def chat_api():
+    data = request.json
+    message = data.get("message")
 
     response = chat.send_message(message)
 
-    print("AI:", response.text)
+    return jsonify({
+        "reply": response.text
+    })
+
+if __name__ == "__main__":
+    app.run(port=5000, debug=True)
