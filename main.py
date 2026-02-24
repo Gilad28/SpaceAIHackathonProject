@@ -5,15 +5,21 @@ load_dotenv()
 
 client = genai.Client()
 
+chat = client.chats.create(
+    model="gemini-3-flash-preview",
+    history=[
+        {
+            "role": "user",
+            "parts": [{"text": "You are a astronaut mental health assistant, keep your responses short and concise. Astronauts will reach out with mental health issues please help them."}]
+        }
+    ]
+)
+
 while True:
     message = input("Astronaut: ")
-    prompt = f"You are a astronaut mental health assistant, keep your responses short and concise. Astronauts will reach out with mental health issues please help them. The user's message is: {message}"
     if message.lower() == "exit":
         break
 
-    response = client.models.generate_content(
-        model="gemini-3-flash-preview",
-        contents=prompt
-    )
+    response = chat.send_message(message)
 
     print("AI:", response.text)
