@@ -1,5 +1,48 @@
 
 
+.Nav {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.NavBtn {
+  background: transparent;
+  border: 1px solid #22ff00;
+  color: #22ff00;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+}
+.NavBtn:hover { opacity: 0.9; }
+.NavBtn.active {
+  background: #22ff00;
+  color: #000;
+}
+
+.RequirementsPage {
+  color: #22ff00;
+  padding: 16px 0;
+}
+.RequirementsTitle {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+.RequirementsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.RequirementsList li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(34, 255, 0, 0.3);
+}
+.RequirementsList code {
+  background: rgba(34, 255, 0, 0.2);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
 .Header {
   color: #22ff00;
 }

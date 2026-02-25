@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [page, setPage] = useState("chat");
   const [input, setInput] = useState("");
   const [thinking, setThinking] = useState(false);
   const [messages, setMessages] = useState([
@@ -40,6 +41,23 @@ function App() {
 
   return (
    <div className="App">
+    <nav className="Nav">
+      <button className={`NavBtn ${page === "chat" ? "active" : ""}`} onClick={() => setPage("chat")}>Chat</button>
+      <button className={`NavBtn ${page === "requirements" ? "active" : ""}`} onClick={() => setPage("requirements")}>Requirements</button>
+    </nav>
+    {page === "requirements" ? (
+      <div className="RequirementsPage">
+        <h1 className="RequirementsTitle">Requirements</h1>
+        <ul className="RequirementsList">
+          <li>Modern browser (Chrome, Firefox, Safari, Edge)</li>
+          <li>Backend running at <code>http://127.0.0.1:5000</code></li>
+          <li>Vite dev server (e.g. port 5174) for frontend</li>
+          <li>Google Gemini API key in <code>.env</code></li>
+          <li>Node.js 18+ and Python 3.10+</li>
+        </ul>
+      </div>
+    ) : (
+      <>
     <p className="Header">Connection Successfully Established</p>
     <div className="Messages">
     {messages.map((m, i) => (
@@ -69,6 +87,8 @@ function App() {
           }}
         />
       </div>
+      </>
+    )}
     </div>
   )
 }
