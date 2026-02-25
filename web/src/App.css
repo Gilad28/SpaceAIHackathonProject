@@ -4,6 +4,35 @@
   color: #22ff00;
 }
 
+.Thinking {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+.ThinkingLabel {
+  color: #22ff00;
+  font-size: 18px;
+}
+.ThinkingBar {
+  flex: 1;
+  height: 6px;
+  background: rgba(34, 255, 0, 0.2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.ThinkingBarFill {
+  height: 100%;
+  width: 40%;
+  background: #22ff00;
+  border-radius: 3px;
+  animation: thinking 0.8s ease-in-out infinite;
+}
+@keyframes thinking {
+  0%, 100% { transform: translateX(-100%); }
+  50% { transform: translateX(250%); }
+}
+
 .InputField {
   flex: 1;
   background: transparent;
